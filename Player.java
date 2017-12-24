@@ -1,35 +1,22 @@
 import java.util.ArrayList;
 
-public class Player {
-	private String name;//ª±®a©m¦W
-	private int chips;//ª±®a¦³ªºÄw½X
-	private int bet;//ª±®a¦¹§½¤Uª`ªºÄw½X
-	private ArrayList<Card> oneRoundCard;//¦¹µP§½ªº¥d
-	private ArrayList<Player> players;
-	Player player=new Player(name,chips);
-	public Player(String name, int chips) //·s¼Wª±®a
+public class Player extends Person{
+	private String name;//ç©å®¶å§“å
+	private int chips;//ç©å®¶æœ‰çš„ç±Œç¢¼
+	private int bet;//ç©å®¶æ­¤å±€ä¸‹æ³¨çš„ç±Œç¢¼
+	private ArrayList<Card> oneRoundCard;//æ­¤ç‰Œå±€çš„å¡
+	
+	public Player(String name, int chips) //æ–°å¢ç©å®¶
 	{
-	  name=this.name;
-	  chips=this.chips;	
+		this. name=name;
+		this.chips=chips;	
 	}
+	 
+ 
+	@Override
+	public boolean hit_me(Table table) {
+		// TODO Auto-generated method stub
 
-	public String getName()
-	{
-		return name;
-	}
-	public int makeBet()//¤Uª`
-	{ 
-		bet=1;
-		return bet;
-		
-	}
-	public void setOneRoundCard(ArrayList cards)//³]©w¦¹µP§½©Ò±o¨ìªº¥d
-	{
-		oneRoundCard=cards;
-	}
-	public boolean hitMe()//¬O§_­nµP
-	{
-		
 		boolean hitMe;
 		if(getTotalValue()<17)
 		{
@@ -40,31 +27,5 @@ public class Player {
 		}
 		return hitMe;
 	}
-	public int getTotalValue()//¦^¶Ç¦¹µP§½©Ò±oªº¥dÂI¼Æ¥[Á`
-	{
-		int totalValue = 0;
-		for(int i=0;i<oneRoundCard.size();i++)
-		{
-			totalValue+=oneRoundCard.get(i).getRank();
-		}
-		
-		return totalValue;
-	}
-	public int getCurrentChips()//¦^¶Çª±®a²{¦³Äw½X
-	{
-		return chips;
-	}
-	public void increaseChips (int diff)//ª±®aÄw½XÅÜ°Ê
-	{
-		chips+=diff;
-	}
-	public void sayHello()
-	{
-		System.out.println("Hello, I am " + name + ".");
-		System.out.println("I have " + chips + " chips.");
-	}
-	
-	
-	
-	
+
 }
